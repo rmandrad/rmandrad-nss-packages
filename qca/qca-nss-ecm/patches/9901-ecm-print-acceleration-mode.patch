@@ -1,0 +1,10 @@
+--- a/ecm_init.c
++++ b/ecm_init.c
+@@ -241,6 +241,7 @@
+ 	ecm_front_end_common_sysctl_register();
+ 
+ 	printk(KERN_INFO "ECM init complete\n");
++	pr_info("Selected front end is  %d\n", selected_front_end);
+ 	return 0;
+ 
+ #ifdef ECM_STATE_OUTPUT_ENABLE
