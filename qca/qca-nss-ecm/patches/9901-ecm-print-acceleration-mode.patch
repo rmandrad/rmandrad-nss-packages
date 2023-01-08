@@ -1,10 +1,19 @@
---- a/ecm_init.c
-+++ b/ecm_init.c
-@@ -241,6 +241,7 @@
+--- a/ecm_init.c	2023-01-05 07:28:49.093316988 +0000
++++ b/ecm_init.c	2023-01-05 07:28:49.093316988 +0000
+@@ -241,6 +241,16 @@
  	ecm_front_end_common_sysctl_register();
  
  	printk(KERN_INFO "ECM init complete\n");
-+	pr_info("Selected front end is  %d\n", selected_front_end);
++	switch(selected_front_end) {
++		case 0:
++			pr_info("Selected ecm front end is AUTO - %d\n", selected_front_end);
++			break;
++		case 1:
++			pr_info("Selected ecm front end is NSS - %d\n", selected_front_end);
++			break;
++		default:
++			pr_info("Selected ecm front end is unknown - %d\n", selected_front_end);
++	}	
  	return 0;
  
  #ifdef ECM_STATE_OUTPUT_ENABLE
