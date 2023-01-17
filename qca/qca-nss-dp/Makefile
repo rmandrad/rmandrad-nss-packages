@@ -34,7 +34,7 @@ define Build/InstallDev
 endef
 
 EXTRA_CFLAGS+= \
-	-I$(STAGING_DIR)/usr/include/qca-ssdk
+	-I$(STAGING_DIR)/usr/include/qca-ssdk -DNSS_DP_IPQ807X
 
 NSS_DP_HAL_DIR:=$(PKG_BUILD_DIR)/hal
 define Build/Configure
