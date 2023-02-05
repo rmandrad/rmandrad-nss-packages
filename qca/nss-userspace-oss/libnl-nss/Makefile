@@ -3,7 +3,6 @@ include $(INCLUDE_DIR)/kernel.mk
 
 PKG_NAME:=libnl-nss
 PKG_RELEASE:=1
-PKG_BUILD_DEPENDS:=libnl
 
 include $(INCLUDE_DIR)/package.mk
 
@@ -11,17 +10,16 @@ define Package/libnl-nss
   SECTION:=Libs
   CATEGORY:=Libraries
   TITLE:=Framework to communicate between userspace applications and the kernel.
-  DEPENDS:=+libpthread +libnl +@NSS_DRV_CRYPTO_ENABLE +kmod-qca-nss-drv-netlink
+  DEPENDS:=+libpthread +libnl +kmod-qca-nss-drv-netlink
 endef
 
 define Package/libnl-nss/description
  A framework in the userspace that establishes communication between userspace applications and the kernel.
 endef
 
-TOOL_CFLAGS:= -I$(1)/usr/include/qca-nss-clients \
+TOOL_CFLAGS:= -I$(STAGING_DIR)/usr/include/qca-nss-clients \
 		  -I$(STAGING_DIR)/usr/include/qca-nss-drv \
-		  -I$(STAGING_DIR)/usr/include/libnl3 \
-                  -I$(PKG_BUILD_DIR)/include/
+		  -I$(STAGING_DIR)/usr/include/libnl3
 
 TOOL_LDFLAGS:= -L$(STAGING_DIR)/lib
 
